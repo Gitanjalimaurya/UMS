@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Information</title>
+    <link rel="stylesheet" th:href="@{/css/admission-contact-info.css}">
+</head>
+<body>
+<div class="container">
+    <h2>Admission Form</h2>
+    <form th:action="@{/admission-contact-info}" method="post" th:object="${admission}">
+        <h3>Contact Information</h3>
+
+        <div class="form-group">
+            <label for="student_phone_no">Student Phone Number</label>
+            <input type="text" id="student_phone_no" th:field="*{student_phone_no}" placeholder="Enter student phone number">
+            <div class="error-message" th:if="${#fields.hasErrors('student_phone_no')}" th:errors="*{student_phone_no}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="parent_phone_no">Parent Phone Number</label>
+            <input type="text" id="parent_phone_no" th:field="*{parent_phone_no}" placeholder="Enter parent phone number">
+            <div class="error-message" th:if="${#fields.hasErrors('parent_phone_no')}" th:errors="*{parent_phone_no}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="student_email">Student Email</label>
+            <input type="email" id="student_email" th:field="*{student_email}" placeholder="Enter student email">
+            <div class="error-message" th:if="${#fields.hasErrors('student_email')}" th:errors="*{student_email}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="parent_email">Parent Email</label>
+            <input type="email" id="parent_email" th:field="*{parent_email}" placeholder="Enter parent email">
+            <div class="error-message" th:if="${#fields.hasErrors('parent_email')}" th:errors="*{parent_email}"></div>
+        </div>
+
+        <div class="button-group">
+            <button type="submit" class="btn">Next</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

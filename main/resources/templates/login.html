@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login</title>
+    <link rel="stylesheet" href="/static/css/login.css" th:href="@{/css/login.css}">
+</head>
+<body>
+<div class="container">
+    <form th:action="@{/login}" method="post" th:object="${loginDto}">
+
+        <h1>Login</h1>
+
+        <div class="profile-div">
+            <label class="required">Profile:</label>
+            <label for="profile-student">
+                <input id="profile-student" type="radio" name="profile" th:value="student" th:field="*{profile}" /> Student
+            </label>
+            <label for="profile-faculty">
+                <input id="profile-faculty" type="radio" name="profile" th:value="faculty" th:field="*{profile}" /> Faculty
+            </label>
+            <label for="profile-admin">
+                <input id="profile-admin" type="radio" name="profile" th:value="admin" th:field="*{profile}" /> Admin
+            </label>
+        </div>
+
+        <div>
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" th:field="*{email}" required/>
+        </div>
+
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" th:field="*{password}" required/>
+        </div>
+
+        <div>
+            <button type="submit">Login</button>
+        </div>
+
+        <div>
+            <a th:href="@{/forgot-password}">Forgot Password?</a>
+        </div>
+
+        <div th:if="${param.error == 'true'}">
+            <p th:text="'Invalid email, password, or profile'">Invalid email, password, or profile</p>
+        </div>
+
+        <div th:if="${param.reset == 'success'}">
+            <p>Password successfully reset</p>
+        </div>
+    </form>
+</div>
+</body>
+</html>

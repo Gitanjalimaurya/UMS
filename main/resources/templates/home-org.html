@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/css/home-org.css" th:href="@{/css/home-org.css}">
+</head>
+<body>
+<section class="header" th:style="'background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url(' + @{/images/home_background.jpg} + ');'">
+    <nav>
+        <img src="#" th:src="@{/images/bv_logo.png}" alt="University Logo" class="logo">
+        <div class="nav-links">
+            <ul>
+                <li><a th:href="@{/registration}" href="/registration">REGISTER</a></li>
+                <li><a th:href="@{/login}" href="/login">LOGIN</a></li>
+                <li><a th:href="@{/contact-us}" href="/contact-us">CONTACT US</a></li>
+                <li><a th:href="@{/about-us}" href="/about-us">ABOUT US</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="text-box">
+        <h1>World's Biggest Women University</h1>
+        <p>At our university, we strive to provide the highest quality education and foster an environment
+            of innovation and academic excellence. Our state-of-the-art facilities and dedicated faculty
+            members are committed to helping you achieve your educational goals. Join us and be a part of
+            a vibrant community where your future begins today.
+        </p>
+        <a href="#" class="visit-btn">Visit Us To Know More</a>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,155 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f8ff;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: #0d5a87;
+  text-align: center;
+  margin-top: 20px;
+}
+
+form {
+  max-width: 650px; /* Increased max-width for a wider white area */
+  margin: 20px auto;
+  padding: 30px; /* Increased padding for more spacing inside the form */
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+  width: calc(100% - 22px); /* Adjusted width to account for padding */
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="password"]:hover,
+select:hover {
+  border-color: #0d5a87;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+input[type="radio"] {
+  margin-right: 5px;
+}
+
+.profile-div,
+.salutation-div,
+.address-div,
+.security-question {
+  margin-bottom: 15px;
+}
+
+.profile-div label,
+.salutation-div label,
+.address-div label {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.btn-div {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-div button {
+  width: 100%;
+  padding: 10px;
+  background-color: #0d5a87;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-div button:hover {
+  background-color: #0a486a;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+.alert {
+  padding: 10px;
+  background-color: #dff0d8;
+  color: #3c763d;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.error {
+  color: red;
+  font-size: 0.9em;
+}
+
+/* Security Questions */
+.security-question {
+  margin-bottom: 15px;
+}
+
+.security-question label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333333;
+}
+
+.security-question input[type="text"],
+.security-question select {
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  display: inline-block; /* Aligns dropdown and answer side by side */
+}
+
+.security-question input[type="text"]:hover,
+.security-question select:hover {
+  border-color: #0d5a87;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.required::after {
+  content: " *";
+  color: red;
+}
+
+/* Styling for Go Back Home Button */
+.btn-home {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 8px 18px; /* Reduced padding for a smaller button */
+  background-color: #0d5a87;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 14px; /* Reduced font size */
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.btn-home:hover {
+  background-color: #0a486a;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); /* Slightly smaller shadow */
+  transform: scale(1.03); /* Reduced scaling effect */
+}
+

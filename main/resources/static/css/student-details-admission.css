@@ -1,0 +1,71 @@
+/* Styling for Student Details Table */
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+    background-color: #f2f2f2;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+td {
+    background-color: #fff;
+}
+
+table img {
+    max-width: 100px; /* Adjust as necessary */
+    height: auto;
+    display: block;
+    margin: 10px auto;
+}
+
+/* Ensure default styling for Marksheet Download links */
+a {
+    color: #007BFF; /* Standard link color */
+    text-decoration: underline; /* Ensure underline on normal links */
+}
+
+a:hover {
+    color: #0056b3; /* Darker color on hover */
+    text-decoration: underline; /* Keep underline on hover */
+}
+
+a:visited {
+    color: #551A8B; /* Purple for visited links */
+}
+
+/* Styling for Back to List Button */
+.btn-back-to-list {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #3498db; /* Button background color */
+    color: #ffffff; /* Button text color */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-back-to-list:hover {
+    transform: scale(1.02); /* Slight button scale on hover */
+    text-decoration:none;
+}
+
+.btn-back-to-list:active {
+    background-color: #1e6f94; /* Even darker background when clicked */
+}

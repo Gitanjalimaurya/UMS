@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education Information</title>
+    <link rel="stylesheet" th:href="@{/css/admission-education-info.css}">
+    <script th:src="@{/js/admission-education-info.js}" defer></script>
+</head>
+<body>
+<div class="container">
+    <h2>Admission Form</h2>
+    <form th:action="@{/admission-education-info}" method="post" th:object="${admission}" enctype="multipart/form-data">
+        <h3>Education Information</h3>
+
+        <div>
+            <label for="high_school_board">High School Board</label>
+            <input type="text" id="high_school_board" th:field="*{high_school_board}" required>
+            <div th:if="${#fields.hasErrors('high_school_board')}" th:errors="*{high_school_board}"></div>
+        </div>
+
+        <div>
+            <label for="high_school_year_of_passing">High School Year of Passing</label>
+            <input type="text" id="high_school_year_of_passing" th:field="*{high_school_year_of_passing}" required>
+            <div th:if="${#fields.hasErrors('high_school_year_of_passing')}" th:errors="*{high_school_year_of_passing}"></div>
+        </div>
+
+        <div>
+            <label for="high_school_marks">High School Marks</label>
+            <input type="text" id="high_school_marks" th:field="*{high_school_marks}" required>
+            <div th:if="${#fields.hasErrors('high_school_marks')}" th:errors="*{high_school_marks}"></div>
+        </div>
+
+        <div>
+            <label for="intermediate_board">Intermediate Board</label>
+            <input type="text" id="intermediate_board" th:field="*{intermediate_board}" required>
+            <div th:if="${#fields.hasErrors('intermediate_board')}" th:errors="*{intermediate_board}"></div>
+        </div>
+
+        <div>
+            <label for="intermediate_year_of_passing">Intermediate Year of Passing</label>
+            <input type="text" id="intermediate_year_of_passing" th:field="*{intermediate_year_of_passing}" required>
+            <div th:if="${#fields.hasErrors('intermediate_year_of_passing')}" th:errors="*{intermediate_year_of_passing}"></div>
+        </div>
+
+        <div>
+            <label for="intermediate_marks">Intermediate Marks</label>
+            <input type="text" id="intermediate_marks" th:field="*{intermediate_marks}" required>
+            <div th:if="${#fields.hasErrors('intermediate_marks')}" th:errors="*{intermediate_marks}"></div>
+        </div>
+
+        <div>
+            <label for="degree">Degree</label>
+            <select id="degree" name="degree" th:field="*{degree}" onchange="showFields()" required>
+                <option value="">Select Degree</option>
+                <option value="undergraduate">Undergraduate</option>
+                <option value="postgraduate">Postgraduate</option>
+            </select>
+            <div th:if="${#fields.hasErrors('degree')}" th:errors="*{degree}"></div>
+        </div>
+
+        <div id="course-field" style="display:none;">
+            <label for="course">Course</label>
+            <select id="course" name="course" th:field="*{course}" required>
+                <option value="">Select a Course</option> <!-- Placeholder option -->
+                <!-- Options will be dynamically added here -->
+            </select>
+            <div th:if="${#fields.hasErrors('course')}" th:errors="*{course}"></div>
+        </div>
+
+        <div id="streams-field" style="display:none;">
+            <label for="streams">Streams</label>
+            <select id="streams" name="streams" th:field="*{stream}" required>
+                <option value="">Select a Stream</option> <!-- Placeholder option -->
+                <!-- Options will be dynamically added here -->
+            </select>
+            <div th:if="${#fields.hasErrors('stream')}" th:errors="*{stream}"></div>
+        </div>
+
+        <div>
+            <label for="high_school_marksheet">Upload High School Marksheet</label>
+            <input type="file" id="high_school_marksheet" th:field="*{high_school_marksheet}" required>
+            <div th:if="${#fields.hasErrors('high_school_marksheet')}" th:errors="*{high_school_marksheet}"></div>
+        </div>
+
+        <div>
+            <label for="intermediate_marksheet">Upload Intermediate Marksheet</label>
+            <input type="file" id="intermediate_marksheet" th:field="*{intermediate_marksheet}" required>
+            <div th:if="${#fields.hasErrors('intermediate_marksheet')}" th:errors="*{intermediate_marksheet}"></div>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+</body>
+</html>

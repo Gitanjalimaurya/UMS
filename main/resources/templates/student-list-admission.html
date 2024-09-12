@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+    <link rel="stylesheet" href="/static/css/student-list-admission.css" th:href="@{/css/student-list-admission.css}">
+</head>
+<body>
+<h1>Student List</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Student Name</th>
+        <th>Phone No</th>
+        <th>Email</th>
+        <th>Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="admission : ${admissions}">
+        <td th:text="${admission.student_name}"></td>
+        <td th:text="${admission.student_phone_no}"></td>
+        <td th:text="${admission.student_email}"></td>
+        <td>
+            <a th:href="@{/students-details-admission/{application_form_no}(application_form_no=${admission.application_form_no})}">View Details</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- Go Back to Faculty Dashboard Button -->
+<div class="btn-back">
+    <a th:href="@{/faculty-dashboard}" class="btn-faculty-dashboard">Go Back to Faculty Dashboard</a>
+</div>
+</body>
+</html>
