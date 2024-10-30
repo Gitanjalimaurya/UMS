@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Degree</title>
+    <link rel="stylesheet" th:href="@{/css/add-degree.css}">
+</head>
+<body>
+
+<!-- Header Section from Admin Dashboard -->
+<header class="header-section">
+    <div class="header-container">
+        <h1 class="header-title">Hi, <span th:text="${studentName}">Student</span>!</h1>
+        <nav class="header-nav">
+            <ul class="header-links">
+                <li class="header-link-item"><a th:href="@{/student-list-admission-admin}" class="header-link">Admission</a></li>
+                <li class="header-link-item"><a th:href="@{/document-view-admin}" class="header-link">Documents</a></li>
+                <li class="header-link-item"><a th:href="@{/view-faculty}" class="header-link">Faculty</a></li>
+                <li class="header-link-item"><a th:href="@{/view-faculty-subjects}" class="header-link">Faculty-Subjects</a></li>
+                <li class="header-link-item"><a th:href="@{/record-management}" class="header-link">Record Management</a></li>
+                <li class="header-link-item">
+                    <form th:action="@{/logout}" method="post">
+                        <button type="submit" class="header-logout-button">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Main Content Area -->
+<div class="main-container">
+    <h1 class="main-title">Add Degree</h1>
+
+    <!-- Back to View Degrees Button -->
+    <a href="/view-degree" class="main-button">Back to View Degrees</a>
+
+    <!-- Form to Add Degree -->
+    <form th:action="@{/add-degree}" method="post" class="main-form">
+        <label for="degreeId" class="form-label">Degree ID:</label>
+        <input type="text" id="degreeId" name="degreeId" th:value="${degree.degreeId}" class="form-input" required />
+
+        <label for="degreeName" class="form-label">Degree Name:</label>
+        <input type="text" id="degreeName" name="degreeName" th:value="${degree.degreeName}" class="form-input" required />
+
+        <button type="submit" class="form-submit-button">Submit</button>
+    </form>
+
+    <!-- Success Message -->
+    <p th:if="${message}" th:text="${message}" class="success-message"></p>
+</div>
+
+</body>
+</html>

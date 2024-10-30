@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Faculty Assignment Upload</title>
+    <link rel="stylesheet" href="/css/faculty-assignment-upload.css"/>
+</head>
+<body>
+<header>
+    <div class="header-container">
+<!--        <h1 class="header-title">Hi <span th:text="${studentName}">Student</span>!</h1>-->
+        <nav class="header-nav">
+            <ul class="header-links">
+                <li><a th:href="@{/faculty-subject}" href="faculty-subject.html">Subjects</a></li>
+                <li><a th:href="@{/document-view}" href="document-view.html">Documents</a></li>
+                <li><a th:href="@{/faculty-assignment-view}" href="faculty-assignment-view.html">Assignments</a></li>
+                <li>
+                    <form th:action="@{/logout}" method="post" class="header-logout-form">
+                        <button type="submit" class="header-logout-btn">Logout</button>
+                        <!-- CSRF token automatically added by Thymeleaf -->
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <h2>Upload Assignment</h2>
+        <form th:action="@{/faculty-assignment-upload}" th:object="${assignment}" method="post">
+            <label for="facultyId">Faculty ID (readonly):</label>
+            <input type="text" id="facultyId" name="facultyId" th:value="${facultyId}" readonly>
+
+            <label for="assignmentName">Assignment Name:</label>
+            <input type="text" id="assignmentName" name="assignmentName" placeholder="Enter assignment name" required>
+
+            <label for="courseName">Course Name:</label>
+            <input type="text" id="courseName" name="courseName" placeholder="Enter course name" required>
+
+            <label for="subjectName">Subject Name:</label>
+            <select id="subjectName" name="subjectName" required>
+                <option value="">Select Subject</option>
+                <option th:each="subject : ${subjects}" th:value="${subject.name}" th:text="${subject.name}"></option>
+            </select>
+
+            <label for="semester">Semester:</label>
+            <input type="text" id="semester" name="semester" placeholder="Enter semester" required>
+
+            <label for="streamName">Stream Name:</label>
+            <input type="text" id="streamName" name="streamName" placeholder="Enter stream name" required>
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" placeholder="Enter email" required>
+
+            <button type="submit" class="main-submit-btn">Upload Assignment</button>
+        </form>
+    </div>
+</main>
+
+</body>
+</html>

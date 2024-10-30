@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Course</title>
+    <link rel="stylesheet" type="text/css" href="/css/add-course.css">
+</head>
+<body>
+<!-- Header Section -->
+<header class="admin-header">
+    <div class="admin-header-container">
+        <h1 class="admin-header-title">Hi, <span th:text="${studentName}">Student</span>!</h1>
+        <nav class="admin-header-nav">
+            <ul class="admin-header-nav-list">
+                <li><a th:href="@{/student-list-admission-admin}" href="/student-list-admission-admin" class="admin-header-link">Admission</a></li>
+                <li><a th:href="@{/document-view-admin}" href="/document-view-admin" class="admin-header-link">Documents</a></li>
+                <li><a th:href="@{/view-faculty}" href="/view-faculty" class="admin-header-link">Faculty</a></li>
+                <li><a th:href="@{/view-faculty-subjects}" href="/view-faculty-subjects" class="admin-header-link">Faculty-Subjects</a></li>
+                <li><a th:href="@{/record-management}" href="/record-management" class="admin-header-link">Record Management</a></li>
+                <li>
+                    <form th:action="@{/logout}" method="post">
+                        <button type="submit" class="admin-header-logout-button">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Main Section -->
+<div class="container">
+    <h2 class="add-course-title">Add Course</h2>
+
+    <!-- Back to View Courses -->
+    <a href="/view-course" class="button back-button">Back to View Course</a>
+
+    <form action="#" th:action="@{/add-course}" th:object="${course}" method="post" class="add-course-form">
+        <label for="degree" class="form-label">Degree:</label>
+        <select id="degree" th:field="*{degree.degreeId}" class="form-select">
+            <option th:each="degree : ${degrees}" th:value="${degree.degreeId}" th:text="${degree.degreeName}"></option>
+        </select>
+
+        <label for="stream" class="form-label">Stream:</label>
+        <select id="stream" th:field="*{stream.streamId}" class="form-select">
+            <option th:each="stream : ${streams}" th:value="${stream.streamId}" th:text="${stream.streamName}"></option>
+        </select>
+
+        <label for="courseId" class="form-label">Course ID:</label>
+        <input type="text" id="courseId" th:field="*{courseId}" required class="form-input"/>
+
+        <label for="courseName" class="form-label">Course Name:</label>
+        <input type="text" id="courseName" th:field="*{courseName}" required class="form-input"/>
+
+        <button type="submit" class="submit-button">Add Course</button>
+
+        <!-- Success Message -->
+        <p th:if="${message}" class="success-message" th:text="${message}"></p>
+    </form>
+</div>
+</body>
+</html>

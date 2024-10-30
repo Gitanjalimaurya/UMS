@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Faculty Assignment View</title>
+    <link rel="stylesheet" type="text/css" href="/css/faculty-assignment-view.css">
+</head>
+<body>
+<header>
+    <div class="header-container">
+<!--        <h1 class="header-title">Hi <span th:text="${studentName}">Student</span>!</h1>-->
+        <nav class="header-nav">
+            <ul class="header-links">
+                <li><a th:href="@{/faculty-subject}" href="faculty-subject.html">Subjects</a></li>
+                <li><a th:href="@{/document-view}" href="document-view.html">Documents</a></li>
+                <li><a th:href="@{/faculty-assignment-view}" href="faculty-assignment-view.html">Assignments</a></li>
+                <li>
+                    <form th:action="@{/logout}" method="post" class="header-logout-form">
+                        <button type="submit" class="header-logout-btn">Logout</button>
+                        <!-- CSRF token automatically added by Thymeleaf -->
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <h2>Assignments for Faculty:</h2>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Assignment No</th>
+                <th>Assignment Name</th>
+                <th>Course Name</th>
+                <th>Email</th>
+                <th>Faculty ID</th>
+                <th>Semester</th>
+                <th>Stream Name</th>
+                <th>Subject Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="assignment : ${assignments}">
+                <td th:text="${assignment.assignmentNo}"></td>
+                <td th:text="${assignment.assignmentName}"></td>
+                <td th:text="${assignment.courseName}"></td>
+                <td th:text="${assignment.email}"></td>
+                <td th:text="${assignment.facultyId}"></td>
+                <td th:text="${assignment.semester}"></td>
+                <td th:text="${assignment.streamName}"></td>
+                <td th:text="${assignment.subjectName}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="buttons">
+            <a th:href="@{/faculty-assignment-upload}" class="btn">Add Assignment</a>
+            <a th:href="@{/faculty-dashboard}" class="btn">Go to Dashboard</a>
+        </div>
+    </div>
+</main>
+</body>
+</html>

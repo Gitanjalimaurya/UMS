@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assign Subject to Faculty</title>
+    <link rel="stylesheet" href="/static/css/assign-subject.css" th:href="@{/css/assign-subject.css}">
+</head>
+<body>
+
+<!-- Header Section -->
+<header class="assign-subject-header">
+    <div class="container header-container">
+        <div class="header-title">
+            Admin Dashboard - <span>Assign Subject to Faculty</span>
+        </div>
+        <nav class="header-nav">
+            <ul>
+                <li><a th:href="@{/student-list-admission-admin}" href="/student-list-admission-admin">Admission</a></li>
+                <li><a th:href="@{/document-view-admin}" href="document-view-admin.html">Documents</a></li>
+                <li><a th:href="@{/view-faculty}" href="/view-faculty">Faculty</a></li>
+                <li><a th:href="@{/view-faculty-subjects}" href="/view-faculty-subjects">Faculty-Subjects</a></li>
+                <li><a th:href="@{/record-management}" href="/record-management">Record Management</a></li>
+                <li>
+                    <form th:action="@{/logout}" method="post" class="header-logout-form">
+                        <button type="submit" class="header-logout-btn">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Main Section -->
+<main class="assign-subject-main">
+    <div class="container main-container">
+        <h1>Assign Subject to Faculty</h1>
+
+        <!-- Display success message -->
+        <div th:if="${successMessage}">
+            <p th:text="${successMessage}" style="color: green;"></p>
+        </div>
+
+        <form th:action="@{/assign-subject}" method="post" class="assign-subject-form">
+            <div class="form-group faculty-group">
+                <label for="facultyId">Select Faculty:</label>
+                <select id="facultyId" name="facultyId" required>
+                    <option value="" disabled selected>Select Faculty</option>
+                    <tr th:each="faculty : ${faculties}">
+                        <option th:value="${faculty.facultyId}" th:text="${faculty.name}"></option>
+                    </tr>
+                </select>
+            </div>
+
+            <div class="form-group subject-group">
+                <label for="subjectId">Select Course:</label>
+                <select id="subjectId" name="subjectId" required>
+                    <option value="" disabled selected>Select Subject</option>
+                    <tr th:each="subject : ${subject}">
+                        <option th:value="${subject.id}" th:text="${subject.name}"></option>
+                    </tr>
+                </select>
+            </div>
+
+            <div class="form-group button-group">
+                <button type="submit" class="submit-btn">Assign Subject</button>
+            </div>
+        </form>
+
+        <!-- Button to View Faculty-Subjects -->
+        <div class="form-group view-faculty-group">
+            <a th:href="@{/view-faculty-subjects}" class="back-btn">Back to View Faculty-Subjects</a>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

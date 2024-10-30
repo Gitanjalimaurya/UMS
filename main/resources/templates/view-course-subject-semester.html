@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View Course Subject Semester</title>
+    <link rel="stylesheet" th:href="@{/css/view-course-subject-semester.css}">
+    <script>
+        function confirmDelete(event) {
+            if (!confirm("Are you sure you want to delete this record?")) {
+                event.preventDefault(); // Prevent the form from submitting if the user cancels
+            }
+        }
+    </script>
+</head>
+<body>
+<!-- Header Section -->
+<header class="admin-header">
+    <div class="admin-header-container">
+        <h1 class="admin-header-title">Hi, <span th:text="${studentName}">Student</span>!</h1>
+        <nav class="admin-header-nav">
+            <ul class="admin-header-nav-list">
+                <li><a th:href="@{/student-list-admission-admin}" href="/student-list-admission-admin" class="admin-header-link">Admission</a></li>
+                <li><a th:href="@{/document-view-admin}" href="/document-view-admin" class="admin-header-link">Documents</a></li>
+                <li><a th:href="@{/view-faculty}" href="/view-faculty" class="admin-header-link">Faculty</a></li>
+                <li><a th:href="@{/view-faculty-subjects}" href="/view-faculty-subjects" class="admin-header-link">Faculty-Subjects</a></li>
+                <li><a th:href="@{/record-management}" href="/record-management" class="admin-header-link">Record Management</a></li>
+                <li>
+                    <form th:action="@{/logout}" method="post" class="admin-header-logout-form">
+                        <button type="submit" class="admin-header-logout-button">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Main Section -->
+<div class="container course-subject-semester-container">
+    <h1 class="course-subject-semester-title">Course Subject Semesters</h1>
+
+    <!-- Back to Record Management -->
+    <a href="/record-management" class="button back-button">Back to Record Management</a>
+
+    <!-- Add Course Subject Semester Button -->
+    <a href="/add-course-subject-semester" class="button add-semester-button">Add Semester</a>
+
+    <!-- Message Display -->
+    <div th:if="${message}" th:text="${message}" class="alert message-display"></div>
+
+    <!-- Courses Table -->
+    <table class="course-semester-table">
+        <thead>
+        <tr>
+            <th class="table-header">Course ID</th>
+            <th class="table-header">Course Name</th>
+            <th class="table-header">Subject ID</th>
+            <th class="table-header">Subject Name</th>
+            <th class="table-header">Semester</th>
+            <th class="table-header">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="entry : ${courseSubjectSemesters}">
+            <td th:text="${entry.course.courseId}"></td>
+            <td th:text="${entry.course.courseName}"></td>
+            <td th:text="${entry.subject.id}"></td>
+            <td th:text="${entry.subject.name}"></td>
+            <td th:text="${entry.semester}"></td>
+            <td>
+                <!-- Delete form -->
+                <form th:action="@{/delete-course-subject-semester/{id}(id=${entry.id})}" method="post" class="delete-form">
+                    <button type="submit" class="delete-btn" onclick="confirmDelete(event)">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Error Message Display -->
+    <div th:if="${errorMessage != null}" class="alert alert-danger" th:text="${errorMessage}"></div>
+</div>
+</body>
+</html>

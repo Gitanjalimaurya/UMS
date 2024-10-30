@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Assignment View</title>
+    <link rel="stylesheet" th:href="@{/css/student-dashboard.css}">
+    <link rel="stylesheet" th:href="@{/css/student-assignment-view.css}">
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>Hi <span th:text="${studentName}">Student</span>!</h1>
+        <nav>
+            <ul>
+                <li><a th:href="@{/student-subject}" href="/student-subject">Subject</a></li>
+                <li><a th:href="@{/student-assignment-view}" href="/student-assignment-view">Assignment</a></li>
+                <li><a th:href="@{/document-view-student}" href="/document-view-student">Documents</a></li>
+                <li><a th:href="@{/timetable}" href="/timetable">Time-table</a></li>
+                <li>
+                    <form th:action="@{/logout}" method="post">
+                        <button type="submit">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <h1>Assignments</h1>
+
+        <div class="assignment-section">
+            <div class="pending">
+                <h2>Pending Assignments</h2>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Assignment Name</th>
+                        <th>Stream Name</th>
+                        <th>Course Name</th>
+                        <th>Subject Name</th>
+                        <th>Semester</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="assignment : ${pendingAssignments}">
+                        <td th:text="${assignment.assignmentName}"></td>
+                        <td th:text="${assignment.streamName}"></td>
+                        <td th:text="${assignment.courseName}"></td>
+                        <td th:text="${assignment.subjectName}"></td>
+                        <td th:text="${assignment.semester}"></td>
+                        <td>
+                            <form th:action="@{/upload-assignment}" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="studentEmail" th:value="${studentEmail}"/>
+                                <input type="hidden" name="assignmentNo" th:value="${assignment.assignmentNo}"/>
+                                <input type="file" name="file" accept=".pdf" required/>
+                                <button type="submit">Upload</button>
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="completed">
+                <h2>Completed Assignments</h2>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Assignment Name</th>
+                        <th>Stream Name</th>
+                        <th>Course Name</th>
+                        <th>Subject Name</th>
+                        <th>Semester</th>
+                        <th>Submission Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="submittedAssignment : ${completedAssignments}">
+                        <td th:text="${submittedAssignment.assignment.assignmentName}"></td>
+                        <td th:text="${submittedAssignment.assignment.streamName}"></td>
+                        <td th:text="${submittedAssignment.assignment.courseName}"></td>
+                        <td th:text="${submittedAssignment.assignment.subjectName}"></td>
+                        <td th:text="${submittedAssignment.assignment.semester}"></td>
+                        <td th:text="${submittedAssignment.submissionDate}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Faculty</title>
+    <link rel="stylesheet" href="/static/css/view-faculty.css" th:href="@{/css/view-faculty.css}">
+    <script>
+        // This function will show the confirmation dialog
+        function confirmDelete(event) {
+            var confirmation = confirm("Are you sure you want to delete this faculty member?");
+            if (!confirmation) {
+                // Prevent form submission if the user clicks "No"
+                event.preventDefault();
+            }
+        }
+    </script>
+</head>
+<body>
+
+<!-- Header Section -->
+<header class="view-faculty-header">
+    <div class="container">
+        <div class="header-title">
+            Admin Dashboard - <span>Faculty Members</span>
+        </div>
+        <!-- Navigation Links -->
+        <nav class="header-nav">
+            <ul>
+                <li><a th:href="@{/student-list-admission-admin}" href="/student-list-admission-admin">Admission</a></li>
+                <li><a th:href="@{/document-view-admin}" href="document-view-admin.html">Documents</a></li>
+                <li><a th:href="@{/view-faculty}" href="/view-faculty">Faculty</a></li>
+                <li><a th:href="@{/view-faculty-subjects}" href="/view-faculty-subjects">Faculty-Subjects</a></li>
+                <li><a th:href="@{/record-management}" href="/record-management">Record Management</a></li>
+                <li>
+                    <form th:action="@{/logout}" method="post" class="header-logout-form">
+                        <button type="submit" class="header-logout-btn">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Main Section -->
+<main class="view-faculty-main">
+    <div class="container">
+        <h1 class="faculty-title">Faculty Members</h1>
+
+        <!-- Success Message After Deletion -->
+        <div th:if="${param.deleted}">
+            <div class="alert">Faculty member successfully deleted</div>
+        </div>
+
+        <!-- Faculty Table -->
+        <table class="faculty-table">
+            <thead>
+            <tr>
+                <th>Faculty ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="faculty : ${faculty}">
+                <td th:text="${faculty.facultyId}"></td>
+                <td th:text="${faculty.name}"></td>
+                <td th:text="${faculty.email}"></td>
+                <td th:text="${faculty.phoneNo}"></td>
+                <td>
+                    <!-- Delete Form -->
+                    <form th:action="@{/delete-faculty/{facultyId}(facultyId=${faculty.facultyId})}" method="post">
+                        <button type="submit" class="delete-btn" onclick="confirmDelete(event)">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- Add Faculty Link -->
+        <a th:href="@{/add-faculty}" href="/add-faculty" class="add-faculty-link">Add New Faculty</a>
+
+        <!-- Back to Admin Dashboard Button -->
+        <div class="form-group">
+            <a th:href="@{/admin-dashboard}" class="btn">Back to Admin Dashboard</a>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

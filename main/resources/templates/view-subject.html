@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View Subjects</title>
+    <link rel="stylesheet" th:href="@{/css/view-subject.css}">
+    <script>
+        function confirmDelete(event) {
+            if (!confirm("Are you sure you want to delete this subject?")) {
+                event.preventDefault(); // Prevent the form from submitting if the user cancels
+            }
+        }
+    </script>
+</head>
+<body>
+<!-- Header Section -->
+<header class="admin-header">
+    <div class="admin-header-container">
+        <h1 class="admin-header-title">Hi, <span th:text="${studentName}">Student</span>!</h1>
+        <nav class="admin-header-nav">
+            <ul class="admin-header-nav-list">
+                <li><a th:href="@{/student-list-admission-admin}" href="/student-list-admission-admin" class="admin-header-link">Admission</a></li>
+                <li><a th:href="@{/document-view-admin}" href="/document-view-admin" class="admin-header-link">Documents</a></li>
+                <li><a th:href="@{/view-faculty}" href="/view-faculty" class="admin-header-link">Faculty</a></li>
+                <li><a th:href="@{/view-faculty-subjects}" href="/view-faculty-subjects" class="admin-header-link">Faculty-Subjects</a></li>
+                <li><a th:href="@{/record-management}" href="/record-management" class="admin-header-link">Record Management</a></li>
+                <li>
+                    <form th:action="@{/logout}" method="post">
+                        <button type="submit" class="admin-header-logout-button">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Main Section -->
+<div class="container">
+    <h1 class="subject-header-title">Subjects</h1>
+
+    <!-- Back to Record Management -->
+    <a href="/record-management" class="button back-button">Back to Record Management</a>
+
+    <!-- Add Subject Button -->
+    <a href="/add-subject" class="button add-subject-button">Add Subject</a>
+
+    <!-- Message Display -->
+    <div th:if="${message}" th:text="${message}" class="alert message-display"></div>
+
+    <!-- Subjects Table -->
+    <table class="subjects-table">
+        <thead>
+        <tr>
+            <th>Subject ID</th>
+            <th>Subject Name</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="subject : ${subjects}">
+            <td th:text="${subject.id}"></td>
+            <td th:text="${subject.name}"></td>
+            <td>
+                <!-- Delete form -->
+                <form th:action="@{/delete-subject/{id}(id=${subject.id})}" method="post" class="delete-form">
+                    <button type="submit" class="delete-btn" onclick="confirmDelete(event)">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

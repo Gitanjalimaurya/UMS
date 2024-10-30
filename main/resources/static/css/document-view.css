@@ -1,0 +1,195 @@
+/* Reset default margin and padding */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* Header styling matching faculty dashboard */
+.document-header {
+    background: #333; /* Same background as faculty dashboard */
+    color: #fff;
+    padding: 1rem 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.header-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.header-title span {
+    color: #f44336; /* Same color for the student's name */
+}
+
+.header-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    align-items: center; /* Align items vertically centered */
+}
+
+.header-link-item {
+    display: inline;
+}
+
+/* Link Styles */
+.header-nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.header-nav ul li a:hover {
+    background: #f44336;
+}
+
+/* Logout Button Styles */
+.header-logout-form {
+    display: inline; /* Ensure the form is displayed inline */
+}
+
+.header-logout-btn {
+    background: none;
+    color: #fff;
+    border: none;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-align: center;
+}
+
+.header-logout-btn:hover {
+    background: #f44336;
+}
+
+/* Main Content Styling */
+.document-main {
+    padding: 20px;
+}
+
+/* Upload Button Container */
+.btn-upload-container {
+    margin-bottom: 20px;
+    text-align: right; /* Aligns the button to the right */
+}
+
+.btn-upload {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #ffffff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-upload:hover {
+    background-color: #2980b9;
+}
+
+/* Search Form Styling */
+.search-form {
+    margin-bottom: 20px;
+}
+
+.search-label {
+    font-weight: bold;
+}
+
+.search-input {
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.search-button {
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Green color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Table Styling */
+.document-table {
+    width: 100%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Adding shadow for depth */
+}
+
+.table-header {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+/* Styling for Table Cells */
+.document-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.document-table tr:hover {
+    background-color: #f5f5f5; /* Highlight row on hover */
+}
+
+/* Styling for Document Links */
+a.document-link {
+    color: #3498db;
+    text-decoration: none;
+}
+
+a.document-link:hover {
+    color: #1558b0;
+}
+
+/* Go Back button */
+.btn-back {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.btn-faculty-dashboard {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #ffffff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-faculty-dashboard:hover {
+    background-color: #2980b9;
+}
+
+/* Styling for Delete Button in Table */
+.btn-delete-row {
+    background-color: #e74c3c;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-delete-row:hover {
+    background-color: #c0392b;
+}

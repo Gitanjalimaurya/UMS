@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document List</title>
+    <link rel="stylesheet" href="/static/css/document-view.css" th:href="@{/css/document-view.css}">
+</head>
+<body>
+
+<!-- Header -->
+<header class="document-header">
+    <div class="container">
+<!--        <h1 class="header-title">Hi <span th:text="${studentName}">Student</span>!</h1>-->
+        <nav class="header-nav">
+            <ul class="header-links">
+                <li class="header-link-item"><a th:href="@{/faculty-subject}" href="faculty-subject.html">Subjects</a></li>
+                <li class="header-link-item"><a th:href="@{/document-view}" href="document-view.html">Documents</a></li>
+                <li class="header-link-item"><a th:href="@{/faculty-assignment-view}" href="faculty-assignment-view.html">Assignment</a></li>
+                <li class="header-link-item">
+                    <form th:action="@{/logout}" method="post" class="header-logout-form">
+                        <button type="submit" class="header-logout-btn">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main class="document-main">
+    <div class="btn-upload-container">
+        <a th:href="@{/document-upload}" class="btn-upload">Upload Document</a>
+    </div>
+
+    <form action="#" th:action="@{/document-view}" method="get" class="search-form">
+        <label for="subjectName" class="search-label">Subject Name:</label>
+        <input type="text" id="subjectName" name="subjectName" class="search-input">
+        <button type="submit" class="search-button">Search</button>
+    </form>
+
+    <div th:if="${documents.isEmpty()}" class="no-documents">
+        <p>No documents available for your subjects.</p>
+    </div>
+
+    <table class="document-table">
+        <thead>
+        <tr class="table-header">
+            <th>Document Name</th>
+            <th>Subject Name</th>
+            <th>Document</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="document : ${documents}">
+            <td th:text="${document.document_name}"></td>
+            <td th:text="${document.subject_name}"></td>
+            <td>
+                <a class="document-link" th:href="@{/document-download/{documentId}(documentId=${document.documentId})}" th:download="${document.document_name}">
+                    View Document
+                </a>
+            </td>
+            <td>
+                <form th:action="@{/document-delete/{documentId}(documentId=${document.documentId})}" method="post" class="delete-form">
+                    <button type="submit" class="btn-delete-row">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="btn-back">
+        <a th:href="@{/faculty-dashboard}" class="btn-faculty-dashboard">Go Back to Faculty Dashboard</a>
+    </div>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Select Timetable</title>
+    <link rel="stylesheet" th:href="@{/css/timetable.css}" />
+</head>
+<body>
+<h1>Select Your Timetable</h1>
+<form th:action="@{/view-timetable}" method="get">
+    <label for="subject">Course:</label>
+    <select id="subject" name="subject" required>
+        <option value="">Select Subject</option>
+        <option th:each="subject : ${subjects}" th:value="${subject.id}" th:text="${subject.name}"></option>
+    </select>
+
+    <label for="classSection">Class Section:</label>
+    <select id="classSection" name="classSection" required>
+        <option value="">Select Class Section</option>
+        <option th:each="classSection : ${classSections}" th:value="${classSection.id}" th:text="${classSection.name}"></option>
+    </select>
+
+    <button type="submit">View Timetable</button>
+</form>
+</body>
+</html>

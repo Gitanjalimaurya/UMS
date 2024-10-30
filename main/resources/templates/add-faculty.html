@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Faculty</title>
+    <link rel="stylesheet" href="/static/css/add-faculty.css" th:href="@{/css/add-faculty.css}">
+</head>
+<body>
+
+<!-- Header Section -->
+<header class="add-faculty-header">
+    <div class="container">
+        <div class="header-title">
+            Admin Dashboard - <span>Add Faculty</span>
+        </div>
+        <!-- Navigation Links -->
+        <nav class="header-nav">
+            <ul>
+                <li><a th:href="@{/student-list-admission-admin}" href="/student-list-admission-admin">Admission</a></li>
+                <li><a th:href="@{/document-view-admin}" href="document-view-admin.html">Documents</a></li>
+                <li><a th:href="@{/view-faculty}" href="/view-faculty">Faculty</a></li>
+                <li><a th:href="@{/view-faculty-subjects}" href="/view-faculty-subjects">Faculty-Subjects</a></li>
+                <li><a th:href="@{/record-management}" href="/record-management">Record Management</a></li>
+                <li>
+                    <form th:action="@{/logout}" method="post" class="header-logout-form">
+                        <button type="submit" class="header-logout-btn">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Main Section -->
+<main class="add-faculty-main">
+    <div class="container">
+        <h1 class="add-faculty-title">Add Faculty</h1>
+
+        <!-- Success Message -->
+        <div th:if="${param.success}">
+            <div class="alert">You've successfully added faculty member</div>
+        </div>
+
+        <!-- Add Faculty Form -->
+        <form th:action="@{/add-faculty}" th:object="${faculty}" method="post" class="add-faculty-form">
+            <div class="form-group">
+                <label for="facultyId">Faculty ID:</label>
+                <input type="text" id="facultyId" th:field="*{facultyId}" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" th:field="*{name}" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" th:field="*{email}" required>
+            </div>
+            <div class="form-group">
+                <label for="phoneNo">Phone Number:</label>
+                <input type="text" id="phoneNo" th:field="*{phoneNo}" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Add Faculty</button>
+            </div>
+        </form>
+
+        <!-- Success and Error Messages -->
+        <div th:if="${successMessage}">
+            <p th:text="${successMessage}" style="color: green;"></p>
+        </div>
+        <div th:if="${errorMessage}">
+            <p th:text="${errorMessage}" style="color: red;"></p>
+        </div>
+
+        <!-- Back to View Faculty Page -->
+        <div class="form-group">
+            <a th:href="@{/view-faculty}" class="btn">Back to View Faculty</a>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

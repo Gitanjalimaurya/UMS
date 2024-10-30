@@ -1,0 +1,134 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Admin Header Styles */
+.admin-header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+}
+
+.admin-header-container {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.admin-header-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.admin-header-title span {
+    color: #f44336;
+}
+
+.admin-header-nav {
+    display: flex;
+}
+
+.admin-header-nav-list {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.admin-header-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.admin-header-link:hover {
+    background: #f44336;
+}
+
+.admin-header-logout-button {
+    background: none;
+    color: #fff;
+    border: none;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.admin-header-logout-button:hover {
+    background: #f44336;
+}
+
+/* Add Stream Main Content Styles */
+.add-stream-container {
+    width: 50%;
+    margin: auto;
+}
+
+.add-stream-button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.add-stream-button:hover {
+    background-color: #45a049;
+}
+
+.add-stream-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-stream-label {
+    margin-top: 10px;
+}
+
+.add-stream-input {
+    padding: 10px;
+    margin: 5px;
+    width: 80%;
+}
+
+.add-stream-submit-button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-stream-submit-button:hover {
+    background-color: #45a049;
+}
+
+/* Message Display Styles */
+.message-display {
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.add-stream-alert {
+    color: #d9534f;
+}
+
+.add-stream-alert.success {
+    color: #5cb85c;
+}

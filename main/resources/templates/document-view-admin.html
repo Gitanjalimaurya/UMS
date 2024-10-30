@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document List</title>
+    <link rel="stylesheet" href="/static/css/document-view-admin.css" th:href="@{/css/document-view-admin.css}">
+</head>
+<body>
+
+<!-- Header Section -->
+<header class="header-section">
+    <div class="container">
+        <h1>Hi, <span th:text="${adminName}">Admin</span>!</h1>
+        <nav class="header-nav">
+            <ul>
+                <li class="header-link-item"><a th:href="@{/student-list-admission-admin}" href="/student-list-admission-admin">Admission</a></li>
+                <li class="header-link-item"><a th:href="@{/document-view-admin}" href="/document-view-admin">Documents</a></li>
+                <li class="header-link-item"><a th:href="@{/view-faculty}" href="/view-faculty">Faculty</a></li>
+                <li class="header-link-item"><a th:href="@{/view-faculty-subjects}" href="/view-faculty-subjects">Faculty-Subjects</a></li>
+                <li class="header-link-item"><a th:href="@{/record-management}" href="/record-management">Record Management</a></li>
+                <li class="header-link-item">
+                    <form th:action="@{/logout}" method="post" class="header-logout-form">
+                        <button class="header-logout-btn" type="submit">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Main Section -->
+<main class="document-main">
+
+    <!-- Navigation Bar -->
+    <div class="btn-upload-container">
+        <a th:href="@{/document-upload-admin}" class="btn-upload">Upload</a>
+    </div>
+
+    <!-- Search Form -->
+    <form action="#" th:action="@{/document-view-admin}" method="get" class="search-form">
+        <label for="name" class="search-label">Subject Name:</label>
+        <input type="text" id="name" name="name" class="search-input">
+        <button type="submit" class="search-button">Search</button>
+    </form>
+
+    <!-- Document List Table -->
+    <table class="document-table">
+        <thead class="table-header">
+        <tr>
+            <th>Document Name</th>
+            <th>Subject Name</th>
+            <th>Document</th>
+            <th>Actions</th> <!-- New column for actions -->
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="document : ${document}">
+            <td th:text="${document.document_name}"></td>
+            <td th:text="${document.subject_name}"></td>
+            <td>
+                <a class="document-link" th:href="@{/document-download-admin/{documentId}(documentId=${document.documentId})}" th:download="${document.document_name}">
+                    View Document
+                </a>
+            </td>
+            <td>
+                <form th:action="@{/document-delete-admin/{documentId}(documentId=${document.documentId})}" method="post">
+                    <button type="submit" class="btn-delete-row">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Go Back to Admin Dashboard Button -->
+    <div class="btn-back">
+        <a th:href="@{/admin-dashboard}" class="btn-faculty-dashboard">Go Back to Admin Dashboard</a>
+    </div>
+
+</main>
+
+</body>
+</html>

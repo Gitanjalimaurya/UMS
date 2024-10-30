@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Class Timetable</title>
+    <link rel="stylesheet" th:href="@{/css/view-timetable.css}" />
+</head>
+<body>
+<h1>Class Timetable</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Day</th>
+        <th>Period</th>
+        <th>Subject</th>
+        <th>Teacher</th>
+        <th>Classroom</th>
+        <th>Time</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="entry : ${timetable}">
+        <td th:text="${entry.day}"></td>
+        <td th:text="${entry.period}"></td>
+        <td th:text="${entry.subject}"></td>
+        <td th:text="${entry.teacher}"></td>
+        <td th:text="${entry.classroom}"></td>
+        <td th:text="${entry.time}"></td>
+    </tr>
+    </tbody>
+    <tr th:if="${#lists.isEmpty(timetable)}">
+        <td colspan="6" style="text-align:center;">No timetable available for this subject and section.</td>
+    </tr>
+</table>
+</body>
+</html>

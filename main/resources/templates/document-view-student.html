@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document List - Student</title>
+    <link rel="stylesheet" th:href="@{/css/student-dashboard.css}">
+    <link rel="stylesheet" th:href="@{/css/document-view-student.css}">
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <div class="container">
+<!--        <h1>Hi <span th:text="${studentName}">Student</span>!</h1>-->
+        <nav>
+            <ul>
+                <li><a th:href="@{/student-subject}" href="/student-subject">Subject</a></li>
+                <li><a th:href="@{/student-assignment-view}" href="/student-assignment-view">Assignment</a></li>
+                <li><a th:href="@{/document-view-student}" href="/document-view-student">Documents</a></li>
+                <li><a th:href="@{/timetable}" href="/timetable">Time-table</a></li>
+                <li>
+                    <form th:action="@{/logout}" method="post">
+                        <button type="submit">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <!-- Search Form -->
+        <form action="#" th:action="@{/document-view-student}" method="get" class="search-form">
+            <label for="subjectName">Subject Name:</label>
+            <input type="text" id="subjectName" name="subjectName" placeholder="Enter subject name">
+            <button type="submit">Search</button>
+        </form>
+
+        <!-- Documents Table -->
+        <table>
+            <thead>
+            <tr>
+                <th>Document Name</th>
+                <th>Subject Name</th>
+                <th>Document</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="document : ${documents}">
+                <td th:text="${document.document_name}"></td>
+                <td th:text="${document.subject_name}"></td>
+                <td>
+                    <a class="document-link" th:href="@{/document-download/{documentId}(documentId=${document.documentId})}" th:download="${document.document_name}">
+                        View Document
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- Go Back to Student Dashboard Button -->
+        <div class="btn-back">
+            <a th:href="@{/student-dashboard}" class="btn-student-dashboard">Go Back to Student Dashboard</a>
+        </div>
+    </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Information</title>
+    <link rel="stylesheet" th:href="@{/css/admission-personal-info.css}">
+</head>
+<body>
+<div class="container">
+    <h2>Admission Form</h2>
+    <form th:action="@{/admission-personal-info}" method="post" th:object="${admission}" enctype="multipart/form-data">
+        <h3>Personal Information</h3>
+
+        <div class="form-group">
+            <label class="required" for="student_name">Student Name</label>
+            <input type="text" id="student_name" th:field="*{student_name}" readonly>
+            <div class="error" th:if="${#fields.hasErrors('student_name')}" th:errors="*{student_name}"></div>
+        </div>
+
+        <div class="form-group">
+            <label class="required" for="father_name">Father Name</label>
+            <input type="text" id="father_name" th:field="*{father_name}">
+            <div class="error" th:if="${#fields.hasErrors('father_name')}" th:errors="*{father_name}"></div>
+        </div>
+
+        <div class="form-group">
+            <label class="required" for="mother_name">Mother Name</label>
+            <input type="text" id="mother_name" th:field="*{mother_name}">
+            <div class="error" th:if="${#fields.hasErrors('mother_name')}" th:errors="*{mother_name}"></div>
+        </div>
+
+        <div class="form-group">
+            <label class="required" for="date_of_birth">Date of Birth</label>
+            <input type="date" id="date_of_birth" th:field="*{date_of_birth}">
+            <div class="error" th:if="${#fields.hasErrors('date_of_birth')}" th:errors="*{date_of_birth}"></div>
+        </div>
+
+        <div class="form-group">
+            <label class="required">Gender</label>
+            <div class="radio-group">
+                <label class="radio-item">
+                    <input type="radio" id="male" name="gender" value="Male" th:field="*{gender}"> Male
+                </label>
+                <label class="radio-item">
+                    <input type="radio" id="female" name="gender" value="Female" th:field="*{gender}"> Female
+                </label>
+                <label class="radio-item">
+                    <input type="radio" id="others" name="gender" value="Others" th:field="*{gender}"> Others
+                </label>
+            </div>
+            <div class="error" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></div>
+        </div>
+
+        <div class="form-group">
+            <label class="required" for="religion">Religion</label>
+            <input type="text" id="religion" th:field="*{religion}">
+            <div class="error" th:if="${#fields.hasErrors('religion')}" th:errors="*{religion}"></div>
+        </div>
+
+        <div class="form-group">
+            <label class="required" for="house_no">House Number</label>
+            <input type="text" id="house_no" th:field="*{house_no}" readonly>
+            <div class="error" th:if="${#fields.hasErrors('house_no')}" th:errors="*{house_no}"></div>
+        </div>
+
+        <div class="form-group">
+            <label class="required" for="street_name">Street Name</label>
+            <input type="text" id="street_name" th:field="*{street_name}" readonly>
+            <div class="error" th:if="${#fields.hasErrors('street_name')}" th:errors="*{street_name}"></div>
+        </div>
+
+        <div class="form-group">
+            <label class="required" for="city">City</label>
+            <input type="text" id="city" th:field="*{city}" readonly>
+            <div class="error" th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></div>
+        </div>
+
+        <div class="form-group">
+            <label class="required" for="state">State</label>
+            <input type="text" id="state" th:field="*{state}" readonly>
+            <div class="error" th:if="${#fields.hasErrors('state')}" th:errors="*{state}"></div>
+        </div>
+
+        <div class="form-group">
+            <label class="required" for="country">Country</label>
+            <input type="text" id="country" th:field="*{country}" readonly>
+            <div class="error" th:if="${#fields.hasErrors('country')}" th:errors="*{country}"></div>
+        </div>
+
+        <div class="form-group">
+            <label class="required" for="pin_code">Pin-code</label>
+            <input type="text" id="pin_code" th:field="*{pin_code}" readonly>
+            <div class="error" th:if="${#fields.hasErrors('pin_code')}" th:errors="*{pin_code}"></div>
+        </div>
+
+        <div class="form-group">
+            <label class="required" for="student_image">Upload Student Image</label>
+            <input type="file" id="student_image" th:field="*{student_image}">
+            <div class="error" th:if="${#fields.hasErrors('student_image')}" th:errors="*{student_image}"></div>
+        </div>
+
+        <div class="form-group">
+            <label class="required" for="category">Category</label>
+            <select id="category" th:field="*{category}">
+                <option value="gen">General</option>
+                <option value="obc">OBC</option>
+                <option value="sc">SC</option>
+                <option value="st">ST</option>
+            </select>
+            <div class="error" th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></div>
+        </div>
+
+        <div class="btn-div">
+            <button type="submit" class="btn-next">Next</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

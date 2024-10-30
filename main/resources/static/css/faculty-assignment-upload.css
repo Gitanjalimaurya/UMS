@@ -1,0 +1,158 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Header Styles */
+header {
+    background: #333; /* Keeping the same color as the dashboard */
+    color: #fff;
+    padding: 1rem 0;
+}
+
+.header-container {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.header-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.header-title span {
+    color: #f44336;
+}
+
+.header-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.header-nav ul li {
+    display: inline;
+}
+
+/* Header Link Styles */
+.header-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.header-links li a:hover {
+    background: #f44336;
+}
+
+/* Logout Button Styles */
+.header-logout-form {
+    display: inline; /* Ensure the form is displayed inline */
+}
+
+.header-logout-btn {
+    background: #333; /* Match the header background */
+    color: #fff;
+    border: none;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-align: center;
+}
+
+.header-logout-btn:hover {
+    background: #f44336; /* Match hover effect with other buttons */
+}
+
+/* Main Content Styles */
+main {
+    padding: 2rem 0; /* Add padding to main */
+    background: #f4f4f4; /* Set background color for the main section */
+}
+
+.container {
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+/* Form styling */
+form {
+    /*background-color: #fff;*/
+    padding: 20px;
+    border-radius: 8px;
+    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+    width: 400px;
+    margin: 20px auto;
+}
+
+/* Form field styling */
+label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+    color: #555;
+}
+
+input[type="text"], select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease-in-out;
+}
+
+input[type="text"]:focus, select:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Read-only field styling */
+input[readonly] {
+    background-color: #e9e9e9;
+    cursor: not-allowed;
+}
+
+/* Submit button styling */
+.main-submit-btn {
+    background-color: #4CAF50; /* Keeping the button color consistent */
+    color: white;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Hover effect for the main submit button */
+.main-submit-btn:hover {
+    background-color: #45a049;
+}
+
+/* Basic responsive styling */
+@media (max-width: 600px) {
+    form {
+        width: 90%;
+    }
+}

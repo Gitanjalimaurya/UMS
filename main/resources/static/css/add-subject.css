@@ -1,0 +1,143 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Admin Header Styles */
+.admin-header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+}
+
+.admin-header-container {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.admin-header-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.admin-header-title span {
+    color: #f44336;
+}
+
+.admin-header-nav {
+    display: flex;
+}
+
+.admin-header-nav-list {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.admin-header-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.admin-header-link:hover {
+    background: #f44336;
+}
+
+.admin-header-logout-form {
+    margin-left: auto; /* Aligns the logout button to the right */
+}
+
+.admin-header-logout-button {
+    background: none;
+    color: #fff;
+    border: none;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.admin-header-logout-button:hover {
+    background: #f44336;
+}
+
+/* Main Section Styles */
+.add-subject-container {
+    width: 50%;
+    margin: auto;
+}
+
+.add-subject-title {
+    text-align: center;
+}
+
+.back-button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+.back-button:hover {
+    background-color: #45a049;
+}
+
+.message-display {
+    margin: 20px 0; /* Adds space above and below the message */
+    padding: 10px; /* Adds padding inside the message box */
+    border: 1px solid #ddd; /* Optional: adds a border to the message */
+    border-radius: 5px; /* Optional: rounds the corners of the message box */
+    background-color: #f9f9f9; /* Optional: background color for better visibility */
+}
+
+.alert {
+    color: #d9534f; /* Red for warning messages */
+}
+
+.alert.success {
+    color: #5cb85c; /* Green for success messages */
+}
+
+/* Form Styles */
+.add-subject-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-label {
+    margin-top: 10px;
+}
+
+.form-input {
+    padding: 10px;
+    margin: 5px;
+    width: 80%;
+}
+
+.form-button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-button:hover {
+    background-color: #45a049;
+}

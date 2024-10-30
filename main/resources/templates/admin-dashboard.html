@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/static/css/admin-dashboard.css" th:href="@{/css/admin-dashboard.css}">
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>Hi, <span th:text="${studentName}">Student</span>!</h1>
+        <nav>
+            <ul>
+                <li><a th:href="@{/student-list-admission-admin}" href="/student-list-admission-admin">Admission</a></li>
+                <li><a th:href="@{/document-view-admin}" href="document-view-admin.html">Documents</a></li>
+                <li><a th:href="@{/view-faculty}" href="/view-faculty">Faculty</a></li>
+                <li><a th:href="@{/view-faculty-subjects}" href="/view-faculty-subjects">Faculty-Subjects</a></li>
+                <li><a th:href="@{/record-management}" href="/record-management">Record Management</a></li>
+                <li>
+                    <form th:action="@{/logout}" method="post">
+                        <button type="submit">Logout</button>
+                        <!-- CSRF token automatically added by Thymeleaf -->
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<main>
+    <div class="container">
+        <h2>Welcome to your admin dashboard</h2>
+        <p>Here you can manage your courses, check your admission status, view your timetable, and keep track of your schedule.</p>
+    </div>
+</main>
+</body>
+</html>

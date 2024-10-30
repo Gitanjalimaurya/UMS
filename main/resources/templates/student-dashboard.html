@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="/static/css/student-dashboard.css" th:href="@{/css/student-dashboard.css}">
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>Hi <span th:text="${studentName}">Student</span>!</h1>
+        <nav>
+            <ul>
+                <li><a th:href="@{/student-subject}" href="/student-subject">Subject</a></li>
+                <li><a th:href="@{/student-assignment-view}" href="/student-assignment-view">Assignment</a></li>
+                <li><a th:href="@{/document-view-student}" href="/document-view-student">Documents</a></li>
+                <li>
+                    <form th:action="@{/logout}" method="post">
+                        <button type="submit">Logout</button>
+                        <!-- CSRF token automatically added by Thymeleaf -->
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<main>
+    <div class="container">
+        <h2>Welcome to your student dashboard</h2>
+        <p>Here you can manage your courses, check your admission status, view your timetable, and keep track of your schedule.</p>
+
+        <div th:if="${message != null}">
+            <p style="color: red;" th:text="${message}"></p>
+        </div>
+    </div>
+</main>
+</body>
+</html>

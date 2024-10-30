@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Upload</title>
+    <link rel="stylesheet" href="/static/css/document-upload.css" th:href="@{/css/document-upload.css}">
+</head>
+<body>
+
+<!-- Header -->
+<header class="document-upload-header">
+    <div class="container">
+<!--        <h1 class="header-title">Hi <span th:text="${studentName}">Student</span>!</h1>-->
+        <nav class="header-nav">
+            <ul class="header-links">
+                <li class="header-link-item"><a th:href="@{/faculty-subject}" href="faculty-subject.html">Subjects</a></li>
+                <li class="header-link-item"><a th:href="@{/document-view}" href="document-view.html">Documents</a></li>
+                <li class="header-link-item"><a th:href="@{/faculty-assignment-view}" href="faculty-assignment-view.html">Assignment</a></li>
+                <li class="header-link-item">
+                    <form th:action="@{/logout}" method="post" class="header-logout-form">
+                        <button type="submit" class="header-logout-btn">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main class="document-upload-main">
+    <h2 class="upload-title">Upload Document</h2>
+
+    <form th:action="@{/document-upload}" th:object="${document}" method="post" enctype="multipart/form-data" class="upload-form">
+        <div class="form-group">
+            <label for="documentName" class="form-label">Document Name:</label>
+            <input type="text" id="documentName" th:field="*{document_name}" required class="form-input">
+        </div>
+
+        <div class="form-group">
+            <label for="subjectName" class="form-label">Subject Name:</label>
+            <select id="subjectName" th:field="*{subject_name}" required class="form-select">
+                <option value="" disabled selected>Select a subject</option>
+                <option th:each="subject : ${subjects}" th:value="${subject.name}" th:text="${subject.name}"></option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="pdfLink" class="form-label">Upload Document:</label>
+            <input type="file" id="pdfLink" th:field="*{document_pdfs}" multiple required class="form-input-file">
+        </div>
+
+        <button type="submit" class="submit-button">Upload</button>
+    </form>
+</main>
+
+</body>
+</html>

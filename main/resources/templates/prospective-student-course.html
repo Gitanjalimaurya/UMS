@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prospective Student Course List</title>
+    <link rel="stylesheet" th:href="@{/css/prospective-student-course.css}">
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <div class="container">
+<!--        <h1>Hi <span th:text="${ProspectiveStudentName}">Prospective Student</span>!</h1>-->
+        <nav>
+            <ul>
+                <li><a th:href="@{/prospective-student-course}" href="/prospective-student-course">Courses</a></li>
+                <li><a th:href="@{/admission-personal-info}" href="/admission-personal-info">Admission</a></li>
+                <li>
+                    <form th:action="@{/logout}" method="post">
+                        <button type="submit">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <h1>Degree, Stream, and Course Information</h1>
+
+        <!-- Sort Options -->
+        <form th:action="@{/prospective-student-course}" method="get" class="sort-options">
+            <label>Sort By:</label>
+            <input type="radio" name="sort" value="degreeName" th:checked="${sort == 'degreeName'}"/> Degree Name
+            <input type="radio" name="sort" value="streamName" th:checked="${sort == 'streamName'}"/> Stream Name
+            <input type="radio" name="sort" value="courseName" th:checked="${sort == 'courseName'}"/> Course Name
+            <input type="radio" name="sort" value="duration" th:checked="${sort == 'duration'}"/> Duration
+            <button type="submit">Sort</button>
+        </form>
+
+        <!-- Courses Table -->
+        <table>
+            <thead>
+            <tr>
+                <th>Degree Name</th>
+                <th>Stream Name</th>
+                <th>Course Name</th>
+                <th>Stream Duration</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="course : ${courses}">
+                <td th:text="${course.degree.degreeName}"></td>
+                <td th:text="${course.stream.streamName}"></td>
+                <td th:text="${course.courseName}"></td>
+                <td th:text="${course.stream.duration}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+</body>
+</html>

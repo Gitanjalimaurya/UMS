@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Records Management</title>
+    <link rel="stylesheet" th:href="@{/css/record-management.css}">
+</head>
+<body>
+
+<!-- Header Section -->
+<header class="record-management-header">
+    <div class="header-container">
+        <div class="header-title">
+            Admin Dashboard - <span>Records Management</span>
+        </div>
+        <nav class="header-nav">
+            <ul>
+                <li><a th:href="@{/student-list-admission-admin}" href="/student-list-admission-admin">Admission</a></li>
+                <li><a th:href="@{/document-view-admin}" href="document-view-admin.html">Documents</a></li>
+                <li><a th:href="@{/view-faculty}" href="/view-faculty">Faculty</a></li>
+                <li><a th:href="@{/view-faculty-subjects}" href="/view-faculty-subjects">Faculty-Subjects</a></li>
+                <li><a th:href="@{/record-management}" href="/record-management">Record Management</a></li>
+                <li>
+                    <form th:action="@{/logout}" method="post" class="header-logout-form">
+                        <button type="submit" class="header-logout-btn">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Main Section -->
+<main class="record-management-main">
+    <div class="container">
+        <!-- Left Panel with Vertical Buttons -->
+        <div class="left-panel">
+            <a th:href="@{/view-degree}" class="button">Degree</a>
+            <a th:href="@{/view-stream}" class="button">Stream</a>
+            <a th:href="@{/view-course}" class="button">Course</a>
+            <a th:href="@{/view-subject}" class="button">Subject</a>
+            <a th:href="@{/view-course-subject-semester}" class="button">Semester</a>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Search Bar -->
+            <div class="search-container">
+                <form th:action="@{/record-management/search}" method="get">
+                    <input type="text" name="searchTerm" id="searchInput" placeholder="Search by name..."
+                           th:value="${param.searchTerm != null ? param.searchTerm : ''}" />
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+
+            <!-- Radio Buttons for Sorting -->
+            <div class="sort-options">
+                <form th:action="@{/record-management/sort}" method="get">
+                    <label><input type="radio" name="sortBy" value="degree" onclick="this.form.submit()"
+                                  th:checked="${param.sortBy == 'degree'}"> Degree Name</label>
+                    <label><input type="radio" name="sortBy" value="course" onclick="this.form.submit()"
+                                  th:checked="${param.sortBy == 'course'}"> Course Name</label>
+                    <label><input type="radio" name="sortBy" value="stream" onclick="this.form.submit()"
+                                  th:checked="${param.sortBy == 'stream'}"> Stream Name</label>
+                    <label><input type="radio" name="sortBy" value="subject" onclick="this.form.submit()"
+                                  th:checked="${param.sortBy == 'subject'}"> Subject Name</label>
+                    <label><input type="radio" name="sortBy" value="semester" onclick="this.form.submit()"
+                                  th:checked="${param.sortBy == 'semester'}"> Semester</label>
+                </form>
+            </div>
+
+            <!-- Data Table -->
+            <table id="recordsTable">
+                <thead>
+                <tr>
+                    <th>Degree ID</th>
+                    <th>Degree Name</th>
+                    <th>Stream ID</th>
+                    <th>Stream Name</th>
+                    <th>Course ID</th>
+                    <th>Course Name</th>
+                    <th>Subject ID</th>
+                    <th>Subject Name</th>
+                    <th>Semester</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="record : ${records}">
+                    <td th:text="${record.course.degree.degreeId}"></td> <!-- Degree ID -->
+                    <td th:text="${record.course.degree.degreeName}"></td> <!-- Degree Name -->
+                    <td th:text="${record.course.stream.streamId}"></td> <!-- Stream ID -->
+                    <td th:text="${record.course.stream.streamName}"></td> <!-- Stream Name -->
+                    <td th:text="${record.course.courseId}"></td> <!-- Course ID -->
+                    <td th:text="${record.course.courseName}"></td> <!-- Course Name -->
+                    <td th:text="${record.subject.id}"></td> <!-- Subject ID -->
+                    <td th:text="${record.subject.name}"></td> <!-- Subject Name -->
+                    <td th:text="${record.semester}"></td> <!-- Semester -->
+                </tr>
+                </tbody>
+            </table>
+
+            <!-- Back to Admin Dashboard -->
+            <a href="/admin-dashboard" class="button">Back to Admin Dashboard</a>
+
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

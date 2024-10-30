@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+    <link rel="stylesheet" href="/static/css/student-details-admission-admin.css" th:href="@{/css/student-details-admission-admin.css}">
+</head>
+<body>
+
+<!-- Header Section -->
+<header class="header-section">
+    <div class="container">
+        <h1>Hi, <span th:text="${studentName}">Student</span>!</h1>
+        <nav>
+            <ul>
+                <li><a class="header-link" th:href="@{/student-list-admission-admin}" href="/student-list-admission-admin">Admission</a></li>
+                <li><a class="header-link" th:href="@{/document-view-admin}" href="document-view-admin.html">Documents</a></li>
+                <li><a class="header-link" th:href="@{/view-faculty}" href="/view-faculty">Faculty</a></li>
+                <li><a class="header-link" th:href="@{/view-faculty-subjects}" href="/view-faculty-subjects">Faculty-Subjects</a></li>
+                <li><a class="header-link" th:href="@{/record-management}" href="/record-management">Record Management</a></li>
+                <li>
+                    <form th:action="@{/logout}" method="post">
+                        <button class="header-link" type="submit">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Main Section -->
+<main class="main-section">
+    <h1>Student Details - Admin</h1>
+
+    <!-- Student Details Table -->
+    <table>
+        <thead>
+        <tr>
+            <th>Field</th>
+            <th>Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Name</td>
+            <td th:text="${admission.student_name}"></td>
+        </tr>
+        <tr>
+            <td>Father Name</td>
+            <td th:text="${admission.father_name}"></td>
+        </tr>
+        <tr>
+            <td>Mother Name</td>
+            <td th:text="${admission.mother_name}"></td>
+        </tr>
+        <tr>
+            <td>Date of Birth</td>
+            <td th:text="${admission.date_of_birth}"></td>
+        </tr>
+        <tr>
+            <td>Religion</td>
+            <td th:text="${admission.religion}"></td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td th:text="${admission.gender}"></td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td th:text="${admission.house_no + ', ' + admission.street_name + ', ' + admission.city + ', ' + admission.state + ', ' + admission.country + ' - ' + admission.pin_code}"></td>
+        </tr>
+        <tr>
+            <td>Phone Number</td>
+            <td th:text="${admission.student_phone_no}"></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td th:text="${admission.studentEmail}"></td>
+        </tr>
+        <tr>
+            <td>High School Board</td>
+            <td th:text="${admission.high_school_board}"></td>
+        </tr>
+        <tr>
+            <td>High School Year of Passing</td>
+            <td th:text="${admission.high_school_year_of_passing}"></td>
+        </tr>
+        <tr>
+            <td>High School Marks</td>
+            <td th:text="${admission.high_school_marks}"></td>
+        </tr>
+        <tr>
+            <td>Intermediate Board</td>
+            <td th:text="${admission.intermediate_board}"></td>
+        </tr>
+        <tr>
+            <td>Intermediate Year of Passing</td>
+            <td th:text="${admission.intermediate_year_of_passing}"></td>
+        </tr>
+        <tr>
+            <td>Intermediate Marks</td>
+            <td th:text="${admission.intermediate_marks}"></td>
+        </tr>
+        <tr>
+            <td>Degree</td>
+            <td th:text="${admission.degree}"></td>
+        </tr>
+        <tr>
+            <td>Stream</td>
+            <td th:text="${admission.stream}"></td>
+        </tr>
+        <tr>
+            <td>Course</td>
+            <td th:text="${admission.course}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Display student image -->
+    <p><strong>Student Image:</strong></p>
+    <img th:src="@{/student-image-admin/{application_form_no}(application_form_no=${admission.application_form_no})}" alt="Student Image" />
+
+    <!-- Provide links to mark sheets -->
+    <p><strong>High School Marksheet:</strong>
+        <a class="main-link" th:href="@{/high-school-marksheet-admin/{application_form_no}(application_form_no=${admission.application_form_no})}" download="high_school_marksheet.pdf">Download High School Marksheet</a>
+    </p>
+    <p><strong>Intermediate Marksheet:</strong>
+        <a class="main-link" th:href="@{/intermediate-marksheet-admin/{application_form_no}(application_form_no=${admission.application_form_no})}" download="intermediate_marksheet.pdf">Download Intermediate Marksheet</a>
+    </p>
+
+    <!-- Back to List Button -->
+    <a class="main-link btn-back-to-list" th:href="@{/student-list-admission-admin}">Back to List</a>
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prospective Student Dashboard</title>
+    <link rel="stylesheet" href="/static/css/prospective-student-dashboard.css" th:href="@{/css/prospective-student-dashboard.css}">
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>Hi <span th:text="${ProspectiveStudentName}"></span>!</h1>
+        <nav>
+            <ul>
+                <li><a th:href="@{/prospective-student-course}" href="/prospective-student-course">Courses</a></li>
+                <li><a th:href="@{/admission-personal-info}" href="/admission-personal-info">Admission</a></li>
+                <li>
+                    <form th:action="@{/logout}" method="post">
+                        <button type="submit">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<main>
+    <div class="container">
+        <h2>Welcome to your prospective student dashboard</h2>
+        <p>Here you can manage your courses, and keep track of your application.</p>
+
+        <div th:if="${message != null}">
+            <p style="color: red;" th:text="${message}"></p>
+        </div>
+    </div>
+</main>
+</body>
+</html>

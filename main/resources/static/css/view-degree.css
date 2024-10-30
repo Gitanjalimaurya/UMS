@@ -1,0 +1,133 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Header Styles */
+.header-section {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+}
+
+.header-container {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.header-section h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.header-section h1 span {
+    color: #f44336;
+}
+
+.header-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.header-nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.header-nav ul li a:hover {
+    background: #f44336;
+}
+
+.header-nav ul li form button {
+    background: none;
+    color: #fff;
+    border: none;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.header-nav ul li form button:hover {
+    background: #f44336;
+}
+
+/* Main Content Styles */
+.main-container {
+    width: 80%;
+    margin: auto;
+}
+
+.main-container h1 {
+    text-align: center;
+}
+
+.main-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.main-container th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.main-container .top-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.main-container .button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.main-container .button:hover {
+    background-color: #45a049;
+}
+
+.main-container button {
+    padding: 5px 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.main-container button:hover {
+    background-color: darkred;
+}
+
+/* Styles for alert messages */
+.message-display {
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.alert {
+    color: #d9534f;
+}
+
+.alert.success {
+    color: #5cb85c;
+}

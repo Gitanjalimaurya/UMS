@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Subjects</title>
+    <link rel="stylesheet" th:href="@{/css/student-dashboard.css}">
+    <link rel="stylesheet" th:href="@{/css/student-subject.css}">
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>Hi <span th:text="${studentName}">Student</span>!</h1>
+        <nav>
+            <ul>
+                <li><a th:href="@{/student-subject}" href="/student-subject">Subject</a></li>
+                <li><a th:href="@{/student-assignment-view}" href="/student-assignment-view">Assignment</a></li>
+                <li><a th:href="@{/document-view-student}" href="/document-view-student">Documents</a></li>
+                <li>
+                    <form th:action="@{/logout}" method="post">
+                        <button type="submit">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <!-- Display stream and course name -->
+        <h1>Subjects for
+            <span th:text="${streamName != null ? streamName : 'N/A'}">Stream</span> -
+            <span th:text="${courseName != null ? courseName : 'N/A'}">Course</span>
+        </h1>
+
+        <!-- Sorting form -->
+        <form th:method="get" th:action="@{/student-subject}">
+            <div class="sort-options">
+                <label>Sort by:</label><br>
+                <input type="radio" id="sortBySubjectName" name="sortBy" value="subjectName"
+                       th:checked="${sortBy == 'subjectName'}">
+                <label for="sortBySubjectName">Subject Name</label><br>
+                <input type="radio" id="sortBySemester" name="sortBy" value="semester"
+                       th:checked="${sortBy == 'semester'}">
+                <label for="sortBySemester">Semester</label><br>
+                <button type="submit">Sort</button>
+            </div>
+        </form>
+
+        <!-- Table for subjects -->
+        <table>
+            <thead>
+            <tr>
+                <th>Subject ID</th>
+                <th>Subject Name</th>
+                <th>Semester</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Iterate through subjects -->
+            <tr th:each="subject : ${subjects}">
+                <td th:text="${subject.subjectId}">Subject ID</td>
+                <td th:text="${subjectIdToNameMap[subject.subjectId]}">Subject Name</td>
+                <td th:text="${subject.semester}">Semester</td>
+            </tr>
+            <!-- If no subjects are available, display this message -->
+            <tr th:if="${#lists.isEmpty(subjects)}">
+                <td colspan="3">No subjects found for the selected course.</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+</body>
+</html>

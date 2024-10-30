@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Faculty and Subjects</title>
+    <link rel="stylesheet" href="/static/css/view-faculty-subjects.css" th:href="@{/css/view-faculty-subjects.css}">
+    <script>
+        function search() {
+            var searchQuery = document.getElementById("search").value;
+            window.location.href = "/view-faculty-subjects?search=" + searchQuery;
+        }
+
+        function sort() {
+            var sortOption = document.querySelector('input[name="sort"]:checked').value;
+            window.location.href = "/view-faculty-subjects?sort=" + sortOption;
+        }
+
+        function confirmDelete(event) {
+            var confirmation = confirm("Are you sure you want to delete this faculty-subject relation?");
+            if (!confirmation) {
+                event.preventDefault();
+            }
+        }
+    </script>
+</head>
+<body>
+
+<!-- Header Section -->
+<header class="faculty-subjects-header">
+    <div class="container header-container">
+        <div class="header-title">
+            Admin Dashboard - <span>View Faculty and Subjects</span>
+        </div>
+        <nav class="header-nav">
+            <ul>
+                <li><a th:href="@{/student-list-admission-admin}" href="/student-list-admission-admin">Admission</a></li>
+                <li><a th:href="@{/document-view-admin}" href="document-view-admin.html">Documents</a></li>
+                <li><a th:href="@{/view-faculty}" href="/view-faculty">Faculty</a></li>
+                <li><a th:href="@{/view-faculty-subjects}" href="/view-faculty-subjects">Faculty-Subjects</a></li>
+                <li><a th:href="@{/record-management}" href="/record-management">Record Management</a></li>
+                <li>
+                    <form th:action="@{/logout}" method="post" class="header-logout-form">
+                        <button type="submit" class="header-logout-btn">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Main Section -->
+<main class="faculty-subjects-main">
+    <div class="container main-container">
+        <h1>Faculty and Assigned Courses</h1>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Search by faculty name, subject name, subject ID, or faculty ID" th:value="${searchQuery}">
+            <button class="btn search-btn" onclick="search()">Search</button>
+        </div>
+
+        <!-- Sort Options -->
+        <div class="sort-options">
+            <label>Sort by:</label>
+            <div class="radio-group">
+                <input type="radio" id="sortFaculty" name="sort" value="faculty" onclick="sort()" th:checked="${sort == 'faculty'}">
+                <label for="sortFaculty">Faculty Name</label>
+
+                <input type="radio" id="sortSubject" name="sort" value="subject" onclick="sort()" th:checked="${sort == 'subject'}">
+                <label for="sortSubject">Subject Name</label>
+            </div>
+        </div>
+
+        <!-- Table to Display Faculties and Courses -->
+        <table>
+            <thead>
+            <tr>
+                <th>Faculty ID</th>
+                <th>Faculty Name</th>
+                <th>Subject ID</th>
+                <th>Subject Name</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="relation : ${subjectFacultyRelations}">
+                <td th:text="${relation.faculty.facultyId}"></td>
+                <td th:text="${relation.faculty.name}"></td>
+                <td th:text="${relation.subject.id}"></td>
+                <td th:text="${relation.subject.name}"></td>
+                <td>
+                    <form th:action="@{/delete-relation(relationId=${relation.id})}" method="post" onsubmit="confirmDelete(event)">
+                        <button type="submit" class="btn delete-btn">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- Button to Assign Subject -->
+        <div class="assign-subject">
+            <a th:href="@{/assign-subject}" class="assign-subject-btn">Assign Subject to Faculty</a>
+        </div>
+
+        <!-- Button to Admin Dashboard -->
+        <div class="back-to-dashboard">
+            <a th:href="@{/admin-dashboard}" class="back-btn">Back to Admin Dashboard</a>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
