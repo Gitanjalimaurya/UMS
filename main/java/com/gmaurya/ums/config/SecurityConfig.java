@@ -55,11 +55,6 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-//                .csrf(csrf -> csrf
-//                        .ignoringRequestMatchers("/student-list-admission-admin/accept/**", "/student-list-admission-admin/reject/**") // Adjust as necessary for endpoints needing CSRF ignored
-//                )
-//                .csrf(AbstractHttpConfigurer::disable)
-
                 .authorizeHttpRequests(authorizeRequests ->
                 authorizeRequests
                         .requestMatchers("/images/**").permitAll()
@@ -132,8 +127,8 @@ public class SecurityConfig {
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
 
-        mailSender.setUsername("mauryagitanjali666@gmail.com");
-        mailSender.setPassword("dluubzpbgxrnsewn");
+        mailSender.setUsername("write-your-email-here");
+        mailSender.setPassword("write-your-app-password-here"); //create app password in gmail and use it
 
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");
