@@ -123,7 +123,7 @@ public class StudentServiceImpl implements StudentService {
                 ", your application has been accepted. Your student ID is " + student.getStudentId() + ".";
 
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("mauryagitanjali666@gmail.com");
+        message.setFrom("write-your-email-here");
         message.setTo(to);
         message.setSubject(subject);
         message.setText(text);
@@ -141,7 +141,7 @@ public class StudentServiceImpl implements StudentService {
                 "Best regards,\nYour University Admissions Team";
 
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("mauryagitanjali666@gmail.com");
+        message.setFrom("write-your-email-here");
         message.setTo(to);
         message.setSubject(subject);
         message.setText(text);
